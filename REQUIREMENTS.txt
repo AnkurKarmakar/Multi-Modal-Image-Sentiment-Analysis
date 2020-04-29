@@ -1,7 +1,7 @@
-keras==2.3.0
-tensorflow==2.2.0
-pandas==1.0.3
-numpy==1.18.3
-h5py==2.10.0
+keras==2.0.5
+tensorflow==1.1.0
+pandas==0.19.1
+numpy==1.12.1
+h5py==2.7.0
 statistics
-opencv-python==4.2.0.34
+opencv-python==3.2.0
