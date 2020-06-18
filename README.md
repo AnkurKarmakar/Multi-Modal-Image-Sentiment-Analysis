@@ -1,5 +1,8 @@
 # Multi-Modal-Image-Sentiment-Analysis
 Final Year Project
+
+Python version used : 3.6.0
+
 # To perform Sentiment Analysis of Text present in Image.
 > python3 OCRSentiment.py
 # Face classification and detection.
