@@ -80,3 +80,26 @@ for face_coordinates in faces:
 
 bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
 cv2.imwrite('../images/predicted_test_image.png', bgr_image)
+
+
+# Import modules
+from PIL import Image
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import pytesseract
+# Include tesseract executable in your path
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe"
+# Create an image object of PIL library
+image = Image.open('../images/predicted_test_image.png')
+# pass image into pytesseract module
+# pytesseract is trained in many languages
+image_to_text = pytesseract.image_to_string(image, lang='eng')
+# Print the text
+print(image_to_text)
+
+analyser = SentimentIntensityAnalyzer()
+def sentiment_analyzer_scores(sentence):
+    score = analyser.polarity_scores(sentence)
+    print("{:-<40} {}".format(sentence, str(score)))
+
+sentiment_analyzer_scores(image_to_text) #image_to_text contains extracted text
+
