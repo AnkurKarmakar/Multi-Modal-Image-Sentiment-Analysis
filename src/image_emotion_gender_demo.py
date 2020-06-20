@@ -100,6 +100,12 @@ analyser = SentimentIntensityAnalyzer()
 def sentiment_analyzer_scores(sentence):
     score = analyser.polarity_scores(sentence)
     print("{:-<40} {}".format(sentence, str(score)))
+    if score['compound'] >= 0.05:
+        print("---------positive sentiment-----------")
+    elif score['compound'] <= -0.05:
+        print("---------negative sentiment-----------")
+    else:
+        print("---------neutral sentiment------------")
 
 sentiment_analyzer_scores(image_to_text) #image_to_text contains extracted text
 
