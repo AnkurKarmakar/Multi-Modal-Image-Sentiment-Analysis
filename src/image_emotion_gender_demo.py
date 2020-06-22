@@ -83,7 +83,10 @@ cv2.imwrite('../images/predicted_test_image.png', bgr_image)
 
 
 # Import modules
+import tkinter as tk
+from tkinter import *
 from PIL import Image
+from PIL import ImageTk, Image
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pytesseract
 # Include tesseract executable in your path
@@ -100,12 +103,34 @@ analyser = SentimentIntensityAnalyzer()
 def sentiment_analyzer_scores(sentence):
     score = analyser.polarity_scores(sentence)
     print("{:-<40} {}".format(sentence, str(score)))
+    s=""
     if score['compound'] >= 0.05:
         print("---------positive sentiment-----------")
+        s="positive sentiment"
     elif score['compound'] <= -0.05:
         print("---------negative sentiment-----------")
+        s="negative sentiment"
     else:
         print("---------neutral sentiment------------")
+        s="neutral sentiment"
+    root1 = tk.Tk()
+    root2 = tk.Tk()
+    root1.title("Face Sentiment")
+    root1.geometry('1024x1024')
+    root2.title("Text Sentiment")
+    root2.geometry('1024x1024')
+    img = ImageTk.PhotoImage(Image.open("../images/predicted_test_image.png"))
+    panel = Label(root1, image=img)
+    panel.pack(side="bottom", fill="both", expand="yes")
+
+    x = tk.Label(root2,text="Extracted text= "+image_to_text)
+    x.config(font=("Arial", 20))
+    x.pack()
+    w = tk.Label(root2, text="Sentiment of text= "+s)
+    w.config(font=("Arial", 40))
+    w.pack()
+    root2.mainloop()
+    root1.mainloop()
 
 sentiment_analyzer_scores(image_to_text) #image_to_text contains extracted text
 
