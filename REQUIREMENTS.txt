@@ -1,7 +1,8 @@
 keras==2.0.5
 tensorflow==1.2.0
-pandas==0.19.1
+pandas==0.25.3
 numpy==1.16.4
 h5py==2.10.0
 statistics
 opencv-python==3.2.0.6
+matplotlib==3.2.1
