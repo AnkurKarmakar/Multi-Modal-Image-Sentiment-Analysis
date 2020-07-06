@@ -7,6 +7,13 @@ window=Tk()
 
 window.title("Multi Modal Sentiment Analysis")
 window.geometry('550x200')
+
+C = Canvas(window, bg="blue", height=250, width=300)
+filename = PhotoImage(file = "../images/back.png")
+background_label = Label(window, image=filename)
+background_label.place(x=0, y=0, relwidth=1, relheight=1)
+C.pack()
+
 def search_for_file_path ():
     currdir = os.getcwd()
     tempdir = filedialog.askopenfilename(parent=window, initialdir=currdir, title='Please select a directory')
